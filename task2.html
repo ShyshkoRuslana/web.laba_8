@@ -6,14 +6,27 @@
     <link rel="stylesheet" href="style2.css">
     <title>Starter file</title>
 </head>
-<p>Hello!</p>
-<style>
-    p{
-        font-size:50px;
-        border-bottom: 10px solid var(--yelow);
-        color: var(--black);
-    }
-</style>
 <body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+    </div>
+    <style>
+        .container{
+            display: grid;
+            /*grid-template-columns: 100px 100px 100px;*/
+            grid-template-columns: 200px 500px 50px;
+            grid-template-rows: 200px 100px 400px;
+            grid-gap:20px;
+        }
+    </style>
 </body>
 </html>
