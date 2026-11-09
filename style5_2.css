@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fcf8f7;
+    padding: 16px;
+}
+
+/* Спільний вигляд блоків */
+.layout > * {
+    background: #fff;
+    border: 2px solid #f0634a;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: .9rem;
+    overflow: hidden;
+}
+
+/* Імена областей */
+.header  { grid-area: header; }
+.nav     { grid-area: nav; }
+.main    { grid-area: main; }
+.sidebar { grid-area: sidebar; }
+.ads     { grid-area: ads; }
+.footer  { grid-area: footer; }
+
+/* ---------- MOBILE (за замовчуванням): одна колонка ---------- */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "sidebar"
+    "ads"
+    "footer";
+    gap: 16px;
+    min-height: calc(100vh - 32px);
+}
+
+.main {
+    min-height: 240px;
+}
+
+/* ---------- TABLET: від 768px, 2 колонки ---------- */
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 160px 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+      "header  header"
+      "nav     nav"
+      "sidebar main"
+      "ads     footer";
+    }
+}
+
+/* ---------- DESKTOP: від 1024px, 3 колонки ---------- */
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 200px 1fr 160px;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+      "header  header header"
+      "sidebar nav    ads"
+      "sidebar main   ads"
+      "footer  footer footer";
+    }
+}
