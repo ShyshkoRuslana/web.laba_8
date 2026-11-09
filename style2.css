@@ -1,40 +1,142 @@
-:root{
-    --yelow:#ffc600;
-    --black:#272727;
+:root {
+    --grey: #343436;
 }
-html{
+html {
     box-sizing: border-box;
-    font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" , "Segoe UI Symbol";
-    font-weight: 900;
-    font-size: 10px;
-    color: var(--black);
+    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma,
+    Sans-Serif;
+    font-weight: normal;
+    color: #272727;
     text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
-:before, :after{
+
+*,
+*:before,
+*:after {
     box-sizing: inherit;
-    border-bottom:10px solid var(--yelow);
-    color: var(--black);
 }
-body{
-    background-image:url("./images/topography.svg"),linear-gradient(110deg, #f93d66, #6d47d9);
-    background-size: 340px, auto;
-    min-height: calc(100vh - 100px);
-    margin:50px;
-    background-position:fixed;
-    letter-spacing: -1px;
+
+body {
+    margin: 0;
 }
-h1, h2, h3, h4, h5, h6 {
-    margin:0 0 5px 0;
+
+iframe {
+    width: 100%;
+    height: 100%;
 }
-.item{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.codepen {
     display: grid;
-    justify-content: center;
-    align-items:center;
-    border:5px solid rgba(0, 0, 0, 0.03);
-    border-radius: 3px;
-    font-size: 35px;
-    background-color: #ffc600;
+    grid-template-rows: auto 1fr 1fr auto;
+    height: 100vh;
+    color: white;
 }
-.item p{
-    margin: 0 0 5px 0;
+
+.codepen >* {
+    border:1px solid black;
+}
+
+
+/* Editor! */
+.code {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #1b2b34;
+}
+
+.editor {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.editor__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 5px;
+    grid-gap: 5px;
+    background: rgba(0,0,0,0.1);
+}
+
+.editor__code {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.editor__number {
+    display: block;
+    padding: 0 10px;
+}
+
+.editor__input {
+    resize: none;
+    background: none;
+    border: 0;
+    color: grey;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+/* Pen Header */
+
+.pen {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    grid-gap: 10px;
+    background: black;
+    border-bottom: 5px solid var(--grey);
+    color: white;
+    padding: 10px;
+}
+
+.preview {
+    display: grid;
+}
+
+/* Buttons */
+
+.button {
+    background: var(--grey);
+    border: 0;
+    color: white;
+    padding: 10px;
+    border-radius:5px;
+    font-size: 15px;
+    position: relative;
+}
+
+.button--small {
+    font-size: 12px;
+    padding: 4px;
+}
+
+.button--dirty:before {
+    background: #ffc600;
+    display: block;
+    content: '';
+    height: 2px;
+    width: calc(100% - 6px);
+    position: absolute;
+    left: 3px;
+    top: 3px;
+}
+
+
+.settings {
+    padding: 5px;
+    background: black;
+    border-top: 1px solid grey;
 }
