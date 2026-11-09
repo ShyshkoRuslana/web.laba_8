@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff;
+    color: #222;
+    padding: 20px;
+}
+
+/* ---------- Сітка: 5 колонок × 2 рядки ---------- */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 440px);
+    gap: 30px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* ---------- Картка ---------- */
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    overflow: hidden;                 /* нічого не виходить за межі картки */
+    min-height: 0;                    /* дозволяє flex-елементам стискатись */
+}
+
+.card > img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Тіло картки: при переповненні з'являється прокручування */
+.card__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 24px 28px 12px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;          /* довгі слова переносяться */
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    font-size: 1.05rem;
+    margin: 16px 0 12px;
+}
+
+.card p {
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.card__scheme {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 14px;
+}
+
+/* Кнопка завжди внизу картки */
+.btn {
+    flex-shrink: 0;
+    margin: 8px 28px 28px;
+    padding: 12px;
+    background: #777;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: .95rem;
+    transition: background .2s;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background: #444;
+}
+
+/* Велика картка: колонки 1–2, обидва рядки */
+.card--main {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.card--main > img {
+    height: 260px;
+}
+
+/* ---------- Планшети: ширина ≤ 768px ---------- */
+@media (max-width: 768px) {
+    body {
+        padding: 14px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: 420px;
+        gap: 20px;
+    }
+
+    .card--main {
+        grid-column: 1 / -1;            /* на всю ширину */
+        grid-row: auto;
+        grid-auto-rows: auto;
+        height: 560px;
+    }
+}
+
+/* ---------- Смартфони: ширина ≤ 576px ---------- */
+@media (max-width: 576px) {
+    body {
+        padding: 8px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;     /* одна колонка */
+        grid-auto-rows: minmax(380px, auto);
+        gap: 16px;
+    }
+
+    .card--main {
+        height: 520px;
+    }
+
+    .card {
+        max-height: 520px;              /* захист від надто довгого вмісту */
+    }
+
+    .card__body {
+        padding: 18px 18px 8px;
+    }
+
+    .btn {
+        margin: 8px 18px 18px;
+    }
+}
